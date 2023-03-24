@@ -1,0 +1,43 @@
+The earth's magnetic field behaves to a good approximation like a pure magnetic dipole located at the center of the earth. The magnetic field of a pure dipole is given by
+
+\begin{equation}
+    \boldsymbol{B}_{dip}(\boldsymbol{r}) = \frac{\mu_0}{4\pi}\frac{\boldsymbol{m}\cross\boldsymbol{r}}{r^3}
+\label{eq:dipoleField}
+\end{equation}
+\\
+where $\mu_0$ is the magnetic permeability of free space, $\boldsymbol{m}$ is the magnetic dipole moment, $\boldsymbol{r}$ is the position vector, and $r = \abs{\boldsymbol{r}}$.\\
+\\
+For a particle with charge $q$ and mass $m$ which is moving with a velocity $\boldsymbol{v}$ in electromagnetic fields $\boldsymbol{E}$ and $\boldsymbol{B}$, the force on the particle from is given by the Lorentz force
+
+\begin{equation}
+    \boldsymbol{F}=q(\boldsymbol{E}+\boldsymbol{v} \cross\boldsymbol{B})
+\label{eq:LorentzForce}
+\end{equation}
+\\
+An important note about the Lorentz force due to the magnetic field is that the cross product between the velocity and the magnetic field ensures that the force always acts perpendicular to the direction of motion. This in turn means that the magnetic field does not do any work on the particle.\\
+
+By Newton's second law, the acceleration of such a particle due to the electromagnetic fields is given as
+
+\begin{equation}
+    \boldsymbol{a}=\frac{q}{m}(\boldsymbol{E}+\boldsymbol{v} \cross\boldsymbol{B})
+\label{eq:acceleration}
+\end{equation}
+\\
+I have found it convenient to introduce a rotation matrix $\underline{R}$ that rotates a 3-dimensional column vector $\boldsymbol{v}$ arbitrarily through three consecutive rotations by the transformation
+
+\begin{equation}
+    \boldsymbol{v}' = \underline{R}\boldsymbol{v}
+\label{eq:Rotation}
+\end{equation}
+where $\underline{R}$ is the $3\cross3$ rotation matrix
+
+\begin{equation}
+    \underline{R}=\left(\begin{matrix}
+    c_1c_3-c_2s_1s_3 & -c_1s_3-c_2c_3s_1 & s_1s_2 \\
+    c_3s_1+c_1c_2s_3 & c_1c_2c_3-s_1s_3 & c_1s_2 \\
+    s_2s_3 & c_3s_2 & c_2
+    \end{matrix}\right)
+\label{eq:defineR}
+\end{equation}
+\\
+"$c$" refers to a cosine and "$s$" to sine. {$1,2,3$} refers to the Euler angles {$\alpha,\beta,\gamma$} respectively. $\underline{R}$ denotes specifically a $zxz$-rotation; meaning we rotate $\alpha$ degrees about the $z$-axis, then $\beta$ degrees about the $x$-axis, and finally $\gamma$ degrees about the $z$-axis. 
