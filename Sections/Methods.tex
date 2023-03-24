@@ -2,22 +2,29 @@ We define a coordinate system where the center of the earth is located at the or
 \\
 For the calculations it was convenient to define a unit system with typical magnitudes that we are working with, such that the quantities can be made dimensionless. These characteristic magnitudes are largely based upon the earth's radius, the elementary charge, the proton mass, and typical speeds of solar winds. The quantities are are summarized in Table \ref{tab:characteristicMagnitudes}.
 
-\begin{table}[h]
+\begin{table}[ht]
     \centering
-    \begin{tabular}{c|c|c|c}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
         Quantity & Symbol & Value & Unit\\
+        \hline
         Mass & $m_p$ & $1.67\cdot10^{-27}$ & kg \\
         Charge & $q_0$ & $1.60\cdot10^{-19}$ & C \\
         Time & $t_0$ & $14.2$ & s \\
         Distance & $R_0$ & $6.37\cdot 10^{6}$ & m \\
         Speed & $v_0$ & $4.47\cdot10^4$ & m/s \\
         Magnetic Dipole Moment & $m_0$ & $1.93\cdot10^{19}$ & J/T \\
-        Magnetic Field & $B_0$ & $7.37\cdot10^{-9}$ & T
+        Magnetic Field & $B_0$ & $7.37\cdot10^{-9}$ & T \\
+        \hline
     \end{tabular}
     \caption{Characteristic magnitudes of quantities which are used in the calculations}
     \label{tab:characteristicMagnitudes}
 \end{table}
 
-\noindent In order to plot the magnetic field of the dipole I implemented eq. \ref{eq:dipoleField} as a function, defined coordinate arrays in 3 dimensions and defined the magnetic dipole moment of the system as $\boldsymbol{m}/m_0$ in the negative $z$-direction. Since the earth is tilted by about $11^{\circ}$ with respect to the $z$-axis, we rotate our dipole moment using the transformation defined by eq. \ref{eq:Rotation}, using $\beta=11^{\circ}$. Since we have defined a general way of rotating a vector, we can investigate how solar wind particles will move at different times of the year by tweaking the angle $\alpha$.\\
+\noindent In order to plot the magnetic field of the dipole I implemented eq. \ref{eq:dipoleField} as a function, defined coordinate arrays in 3 dimensions and defined the magnetic dipole moment of the system as $\boldsymbol{m}/m_0$ in the negative $z$-direction. We define the dipole moment to point in the negative direction as this yields a magnetic field with the same directionality as the earth's magnetic field.\footnote{This sets up the magnetic north pole at the earth's geographic south pole. Though this seems weird to many, it is in fact the reality} Since the earth is tilted by about $11^{\circ}$ with respect to the $z$-axis, we rotate our dipole moment using the transformation defined by eq. \ref{eq:Rotation}, using $\beta=11^{\circ}$. Since we have defined a general way of rotating a vector, we can investigate how solar wind particles will move at different times of the year by tweaking the angle $\alpha$.\\
 \\
-The next thing to do was to simulate particles which moved towards the earth from the direction of the sun. Since we used $m=m_p$ and $q=q_0$ in our calculations, our simulations show results for incoming protons. This is reasonable since the outermost layers of the sun consist mostly of hydrogen. To simulate the motion of our protons, we simulated one proton at a time and neglected electromagnetic fields produced by the proton itself. In this way the magnetic field stayed constant. The motion of a proton is then governed by the set of differential equation given in eq. \ref{eq:acceleration}. We solved it numerically using the classic Runge-Kutta algorithm of fouth order by treating eq. \ref{eq:acceleration} as a set of six first order ordinary differential equations.
+The next thing to do was to simulate particles which moved towards the earth from the direction of the sun. Since we used $m=m_p$ and $q=q_0$ in our calculations, our simulations show results for incoming protons. This is reasonable since the outermost layers of the sun consist mostly of hydrogen. To simulate the motion of our protons, we simulated one proton at a time and neglected electromagnetic fields produced by the proton itself. In this way the magnetic field stayed constant. The motion of a proton is then governed by the set of differential equation given in eq. \ref{eq:acceleration}. We solved it numerically using the classic Runge-Kutta algorithm of fouth order by treating eq. \ref{eq:acceleration} as a set of six first order ordinary differential equations.\\
+\\
+In order to check the accuracy of our simulations we utilize the fact that magnetic fields do not do work on a particle. If work is done on the particles, the kinetic energy should remain unchanged, which can be checked after the simulations.\\
+\\
+Lastly we saved trajectory data in order to plot and analyze it later.\\
